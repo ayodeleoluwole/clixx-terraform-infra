@@ -136,14 +136,5 @@ Region : us-east-2
 
 ---
 
-## Roadmap
-
-- [ ] HTTPS listener with ACM certificate
-- [ ] Move DB credentials to AWS Secrets Manager
-- [ ] Add CloudWatch alarms for ASG and RDS monitoring
-- [ ] Enable RDS multi-AZ for high availability
-- [ ] Add WAF to ALB for web application security
-
----
 
 > Infrastructure as code for engineers who build for scale.
