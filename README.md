@@ -136,14 +136,6 @@ Region : us-east-2
 
 ---
 
-## Security Notes
-
-- Database credentials are retrieved from AWS Secrets Manager at runtime — no secrets are hardcoded
-- `enable_deletion_protection` on the ALB is currently set to `false` — set to `true` for production
-- `skip_final_snapshot` on RDS is set to `true` — set to `false` for production
-
----
-
 ## Roadmap
 
 - [ ] HTTPS listener with ACM certificate
@@ -151,12 +143,6 @@ Region : us-east-2
 - [ ] Add CloudWatch alarms for ASG and RDS monitoring
 - [ ] Enable RDS multi-AZ for high availability
 - [ ] Add WAF to ALB for web application security
-
----
-
-## License
-
-MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
