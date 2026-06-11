@@ -9,15 +9,24 @@ data "template_file" "bootstrap" {
         RDSHost        = local.clixx_creds.RDSHost
         DBName         = local.clixx_creds.DBName
         DBUser         = local.clixx_creds.DBUser
-        DBPassword     = local.clixx_creds.DBPassword        
+        DBPassword     = local.clixx_creds.DBPassword  
+        LB_DNS    = aws_lb.test-instance-lb.dns_name      
         
     }
 }
 
 
+locals{
+  server_name=""
+  server_prefix="stack"
+  clixx_creds = jsondecode(
+    data.aws_secretsmanager_secret_version.clixx-credentials.secret_string
+  )
+}
+
+
 #Data source for secrets
 data "aws_secretsmanager_secret_version" "clixx-credentials"{
-    #fill in the name you gave to your secrets
     secret_id = "clixx-credentials"
 }
 
@@ -34,11 +43,3 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-
-locals{
-  server_name=""
-  server_prefix="stack"
-  clixx_creds = jsondecode(
-    data.aws_secretsmanager_secret_version.clixx-credentials.secret_string
-  )
-}

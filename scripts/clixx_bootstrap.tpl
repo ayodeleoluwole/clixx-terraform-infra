@@ -11,6 +11,7 @@ DBName='${DBName}'
 DBUser='${DBUser}'
 DBPassword='${DBPassword}'
 RDSHost='${RDSHost}'
+LOAD_BALANCER='${LB_DNS}'
 
 
 # ----- EFS Variables   (This is not been sent to terraform data source as variables)
@@ -101,7 +102,7 @@ fi
 
 mysql -u "$DBUser" -p"$DBPassword" -h "$RDSHost" -D "$DBName" <<EOF
 
-UPDATE wp_options SET option_value = "http://LB1-1754196530.us-east-1.elb.amazonaws.com" WHERE option_value LIKE 'http%';
+UPDATE wp_options SET option_value = "http://$LOAD_BALANCER" WHERE option_value LIKE 'http%';
 EOF
 
 # ==================================================================
